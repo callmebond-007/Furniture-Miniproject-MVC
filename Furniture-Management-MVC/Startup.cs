@@ -38,6 +38,8 @@ namespace Furniture_Management_MVC
             }
             app.UseStaticFiles();
 
+            app.UseAuthentication();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -46,7 +48,7 @@ namespace Furniture_Management_MVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Furniture}/{action=Index}/{id?}");
             });
         }
     }
