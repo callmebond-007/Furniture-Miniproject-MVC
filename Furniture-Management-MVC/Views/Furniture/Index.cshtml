@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FurnitureDetailsViewModel>
+
+
+<h1>Furniture List</h1>
+<hr />
+
+<body>
+
+@if (Model.Count() == 0)
+        {
+          <span> No Records Found!!!</span>
+       }
+        else
+        {
+               @foreach (var furniture in Model)
+        {
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+
+                <div class="card  border-dark mt-2 text-dark" style="max-width: 700px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            @if (@furniture.CategoryName == "Chair")
+                            {
+                                <img src="https://www.vyomdesign.in/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/h/i/high-back-chair---teak-wood-1_8.jpg" class="img-fluid rounded-start" alt="Hollywood Sign on The Hill"/>
+                            }
+                            @if (@furniture.CategoryName == "Table")
+                            {
+                                <img src="https://www.betterhomeindia.com/wp-content/uploads/2019/01/5-min.jpg" class="img-fluid rounded-start" alt="Hollywood Sign on The Hill"/>
+                            }
+                             @if (@furniture.CategoryName == "Bed")
+                            {
+                                <img src="https://www.decornation.in/wp-content/uploads/2020/03/solid-wood-bedroom-beds.jpg" class="img-fluid rounded-start" alt="Hollywood Sign on The Hill"/>
+                            }
+                             @if (@furniture.CategoryName == "Dining")
+                            {
+                                <img src="https://homedesignlover.com/wp-content/uploads/2016/05/6-spin_prod.jpg" class="img-fluid rounded-start" alt="Hollywood Sign on The Hill"/>
+                            } 
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                 <h5 class="card-title">@furniture.ItemName</h5>
+                                 <p>Id = @furniture.Id</p>
+                                 <p>Item Description = @furniture.ItemDescription</p>
+                                 <p>Wood Type = @furniture.WoodType</p>
+                                 <p>Category = @furniture.CategoryName</p>
+                                 <p>CreatedBy = @furniture.CreatedBy</p>
+                                 <p>CreatedDate = @furniture.CreatedDate</p>
+                                 <a  class="btn btn-primary" asp-controller="Furniture" asp-action="UpdateFurniture" asp-route-id="@furniture.Id">Edit</a>
+                                 <a  class="btn btn-primary" asp-controller="Furniture" asp-action="DeleteFurniture" asp-route-id="@furniture.Id">Delete</a>
+                            </div>
+                        </div>
+                     </div> 
+                   </div>
+               
+             </div>
+               
+             
+            }
+          
+        }
+
+    </body>
+

@@ -1,0 +1,37 @@
+﻿@model UpdateFurnitureViewModel
+
+<link href="~/css/Update.css" rel="stylesheet" />
+<h1>Edit Furniture</h1>
+<hr />
+
+<form asp-controller="Furniture" asp-action="UpdateFurniture" method="post">
+
+    <div class="form-group">
+
+
+        <label asp-for="ItemName"></label>
+        <input type="text" asp-for="ItemName" class="form-control" />
+        <span asp-validation-for="ItemName" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="ItemDescription"></label>
+        <input type="text" asp-for="ItemDescription" class="form-control" />
+        <span asp-validation-for="ItemDescription" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WoodType"></label>
+        <input type="text" asp-for="WoodType" class="form-control" />
+        <span asp-validation-for="WoodType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Item Category</label>
+        <select class="form-control" asp-for="CategoryId" asp-items="@Model.CategoryList"></select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+
+
+

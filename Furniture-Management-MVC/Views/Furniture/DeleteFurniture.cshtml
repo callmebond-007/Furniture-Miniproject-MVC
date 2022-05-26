@@ -1,0 +1,49 @@
+﻿@model DeleteFurnitureViewModel
+
+ 
+<h2>Do you want to delete the Furniture?</h2>
+<hr />
+
+<form asp-controller="Furniture" asp-action="DeleteFurniture" method="post">
+    <div class="row">
+        <div class="col-sm-3">
+            <label asp-for="ItemName"></label>
+        </div>
+        <div class="col-sm-3">
+            @Model.ItemName
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <label asp-for="ItemDescription"></label>
+        </div>
+        <div class="col-sm-3">
+            @Model.ItemDescription
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <label asp-for="WoodType"></label>
+        </div>
+        <div class="col-sm-3">
+            @Model.WoodType
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <label asp-for="CategoryName"></label>
+        </div>
+        <div class="col-sm-3">
+            @Model.CategoryName
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a class="btn btn-primary" asp-controller="Furniture" asp-action="Index">Cancel</a>
+
+        </div>
+
+    </div>
+</form>
+

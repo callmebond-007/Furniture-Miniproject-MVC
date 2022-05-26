@@ -1,12 +1,12 @@
+using Furniture_Management_MVC.DBContext;
+using Furniture_Management_MVC.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Furniture_Management_MVC
 {
@@ -15,6 +15,7 @@ namespace Furniture_Management_MVC
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+           
         }
 
         public IConfiguration Configuration { get; }
@@ -23,6 +24,16 @@ namespace Furniture_Management_MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            string connectionString = Configuration.GetConnectionString("FurnitureConnectionString");
+            services.AddDbContext<FurnitureDbContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<FurnitureDbContext>();
+
+
+            services.AddTransient<IFurnitureRepository, FurnitureRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,9 +45,11 @@ namespace Furniture_Management_MVC
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
             }
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseAuthentication();
 

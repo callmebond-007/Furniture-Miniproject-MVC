@@ -1,0 +1,47 @@
+﻿@model LoginViewModel
+
+<link href="~/css/Login.css" rel="stylesheet" />
+
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://stylesatlife.com/wp-content/uploads/2020/01/interior-furniture-design-for-hall.jpg"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form asp-controller="Account" asp-action="Login" method="post">
+
+
+                    <h2 class="fw-bold mb-5">Login</h2>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input class="form-control" asp-for="Email" placeholder="Enter a valid Email Address" />
+                        <span class="text-danger" asp-validation-for="Email"></span>
+
+                       
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        <input class="form-control" asp-for="Password" placeholder="Enter Password" />
+                        <span class="text-danger" asp-validation-for="Password"></span>
+
+                       
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-primary">Login</button>
+
+                        <p>Don't have an account? <a asp-controller="Account" asp-action="Register" class="link-info">Register here</a></p>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
