@@ -51,8 +51,6 @@ namespace Furniture_Management_MVC
 
             app.UseAuthentication();
 
-            app.UseAuthentication();
-
             app.UseRouting();
 
             app.UseAuthorization();
