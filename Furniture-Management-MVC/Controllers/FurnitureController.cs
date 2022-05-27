@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Furniture_Management_MVC.Controllers
 {
@@ -70,22 +71,30 @@ namespace Furniture_Management_MVC.Controllers
             return View(addFurnitureViewModel);
         }
         [HttpPost]
-        public IActionResult AddFurniture(AddFurnitureViewModel furnitureViewModel)
+        public IActionResult AddFurniture( AddFurnitureViewModel furnitureViewModel)
         {
             if (ModelState.IsValid)
             {
-                var furniture = new Furniture
+                var existingFurnitures = _furnitureRepository.GetAllFurnitures(User.Identity.Name);
+                var furnitures= existingFurnitures?.FirstOrDefault(i => i.ItemName.ToLower() == furnitureViewModel.ItemName.ToLower() && i.WoodType.ToLower() == furnitureViewModel.WoodType.ToLower());
+                if (furnitures != null)
                 {
-                    ItemName = furnitureViewModel.ItemName,
-                    ItemDescription = furnitureViewModel.ItemDescription,
-                    WoodType = furnitureViewModel.WoodType,
-                    ItemPrice = furnitureViewModel.ItemPrice,
-                    CategoryId = furnitureViewModel.CategoryId,
-                    CreatedBy = HttpContext.User.Identity.Name,
-                    CreatedDate = DateTime.Now
-                };
-                var addedFurniture = _furnitureRepository.AddFurniture(furniture);
-                return RedirectToAction("Index");
+                    return Conflict("Item Already Exists!!!!!");
+                }
+                {
+                    Furniture furniture = new Furniture
+                    {
+                        ItemName = furnitureViewModel.ItemName,
+                        ItemDescription = furnitureViewModel.ItemDescription,
+                        WoodType = furnitureViewModel.WoodType,
+                        ItemPrice = furnitureViewModel.ItemPrice,
+                        CategoryId = furnitureViewModel.CategoryId,
+                        CreatedBy = HttpContext.User.Identity.Name,
+                        CreatedDate = DateTime.Now
+                    };
+                    var addedFurniture = _furnitureRepository.AddFurniture(furniture);
+                    return RedirectToAction("Index");
+                }
             }
             return View(furnitureViewModel);
         }
