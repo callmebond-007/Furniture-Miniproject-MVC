@@ -58,6 +58,9 @@ namespace Furniture_Management_MVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("ItemPrice")
+                        .HasColumnType("float");
+
                     b.Property<string>("WoodType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

@@ -15,6 +15,9 @@ namespace Furniture_Management_MVC.ViewModels.Furniture
         [Required(ErrorMessage = "Wood Type is Mandatory")]
         public string WoodType { get; set; }
 
+        [Required(ErrorMessage = "Item Price is Mandatory")]
+        public double ItemPrice { get; set; }
+
         [Required(ErrorMessage = "Category is Mandatory")]
         public int CategoryId { get; set; }
 

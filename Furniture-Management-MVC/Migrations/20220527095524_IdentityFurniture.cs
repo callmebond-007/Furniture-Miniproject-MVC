@@ -174,6 +174,7 @@ namespace Furniture_Management_MVC.Migrations
                     ItemName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ItemDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     WoodType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ItemPrice = table.Column<double>(type: "float", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)

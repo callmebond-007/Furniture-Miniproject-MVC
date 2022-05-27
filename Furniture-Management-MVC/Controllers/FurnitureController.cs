@@ -33,6 +33,7 @@ namespace Furniture_Management_MVC.Controllers
                     ItemName = furniture.ItemName,
                     ItemDescription = furniture.ItemDescription,
                     WoodType = furniture.WoodType,
+                    ItemPrice = furniture.ItemPrice,
                     CategoryName = furniture.Category.CategoryName,
                     CreatedBy = furniture.CreatedBy,
                     CreatedDate = furniture.CreatedDate
@@ -78,6 +79,7 @@ namespace Furniture_Management_MVC.Controllers
                     ItemName = furnitureViewModel.ItemName,
                     ItemDescription = furnitureViewModel.ItemDescription,
                     WoodType = furnitureViewModel.WoodType,
+                    ItemPrice = furnitureViewModel.ItemPrice,
                     CategoryId = furnitureViewModel.CategoryId,
                     CreatedBy = HttpContext.User.Identity.Name,
                     CreatedDate = DateTime.Now
@@ -111,6 +113,7 @@ namespace Furniture_Management_MVC.Controllers
             updateFurnitureViewModel.ItemName = furnitureToBeEdited.ItemName;
             updateFurnitureViewModel.ItemDescription = furnitureToBeEdited.ItemDescription;
             updateFurnitureViewModel.WoodType = furnitureToBeEdited.WoodType;
+            updateFurnitureViewModel.ItemPrice = furnitureToBeEdited.ItemPrice;
             updateFurnitureViewModel.CategoryId = furnitureToBeEdited.CategoryId;
 
 
@@ -127,6 +130,7 @@ namespace Furniture_Management_MVC.Controllers
                     ItemName = updateFurnitureViewModel.ItemName,
                     ItemDescription = updateFurnitureViewModel.ItemDescription,
                     WoodType = updateFurnitureViewModel.WoodType,
+                    ItemPrice = updateFurnitureViewModel.ItemPrice,
                     CategoryId = updateFurnitureViewModel.CategoryId
                 };
                 _furnitureRepository.UpdateFurniture(id, furniture);
@@ -144,6 +148,7 @@ namespace Furniture_Management_MVC.Controllers
                 ItemName = furnitureToBeDeleted.ItemName,
                 ItemDescription = furnitureToBeDeleted.ItemDescription,
                 WoodType = furnitureToBeDeleted.WoodType,
+                ItemPrice= furnitureToBeDeleted.ItemPrice,
                 CategoryName = furnitureToBeDeleted.Category.CategoryName
             };
             return View(deleteFurnitureViewModel);

@@ -58,6 +58,7 @@ namespace Furniture_Management_MVC.Repository
                 existingFurniture.ItemName = furniture.ItemName;
                 existingFurniture.ItemDescription = furniture.ItemDescription;
                 existingFurniture.WoodType = furniture.WoodType;
+                existingFurniture.ItemPrice = furniture.ItemPrice;
                 existingFurniture.CategoryId = furniture.CategoryId;
                 _furnitureDbContext.SaveChanges();
             }

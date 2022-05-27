@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Furniture_Management_MVC.Migrations
 {
     [DbContext(typeof(FurnitureDbContext))]
-    [Migration("20220526155721_IdentityFurniture")]
+    [Migration("20220527095524_IdentityFurniture")]
     partial class IdentityFurniture
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,6 +59,9 @@ namespace Furniture_Management_MVC.Migrations
                     b.Property<string>("ItemName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ItemPrice")
+                        .HasColumnType("float");
 
                     b.Property<string>("WoodType")
                         .IsRequired()

@@ -7,7 +7,7 @@
 <form asp-controller="Furniture" asp-action="DeleteFurniture" method="post">
     <div class="row">
         <div class="col-sm-3">
-            <label asp-for="ItemName"></label>
+            <label>Name</label>
         </div>
         <div class="col-sm-3">
             @Model.ItemName
@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <label asp-for="ItemDescription"></label>
+            <label>Description</label>
         </div>
         <div class="col-sm-3">
             @Model.ItemDescription
@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <label asp-for="WoodType"></label>
+            <label>Wood Type</label>
         </div>
         <div class="col-sm-3">
             @Model.WoodType
@@ -31,7 +31,15 @@
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <label asp-for="CategoryName"></label>
+            <label>Price</label>
+        </div>
+        <div class="col-sm-3">
+            @Model.ItemPrice
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <label>Category Name</label>
         </div>
         <div class="col-sm-3">
             @Model.CategoryName

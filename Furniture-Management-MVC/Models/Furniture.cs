@@ -19,6 +19,9 @@ namespace Furniture_Management_MVC.Models
         [Required]
         public string WoodType { get; set; }
 
+        [Required]
+        public double ItemPrice{ get; set; }
+
 
         public int CategoryId { get; set; }
 
