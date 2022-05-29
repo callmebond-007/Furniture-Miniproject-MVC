@@ -125,9 +125,7 @@ namespace Furniture_Management_MVC.Controllers
             var updateFurnitureViewModel = new UpdateFurnitureViewModel();
             var furnitureToBeEdited = _furnitureRepository.GetFurnitureById(id);
 
-
-
-            var categories = _categoryRepository.GetAllCategories();
+           var categories = _categoryRepository.GetAllCategories();
             List<SelectListItem> categorySelectListItems = new List<SelectListItem>();
             foreach (var catg in categories)
             {
