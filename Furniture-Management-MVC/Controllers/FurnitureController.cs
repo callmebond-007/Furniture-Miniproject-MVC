@@ -97,7 +97,7 @@ namespace Furniture_Management_MVC.Controllers
                 var furnitures = existingFurnitures?.FirstOrDefault(i => i.ItemName.ToLower() == furnitureViewModel.ItemName.ToLower() && i.WoodType.ToLower() == furnitureViewModel.WoodType.ToLower());
                 if (furnitures != null)
                 {
-                    ModelState.AddModelError("", $"User with {furnitureViewModel.ItemName} already exists!");
+                    ModelState.AddModelError("", $"{furnitureViewModel.ItemName} already exists!");
                     return View(addFurnitureViewModel);
                 }
                 else
