@@ -71,16 +71,36 @@ namespace Furniture_Management_MVC.Controllers
             return View(addFurnitureViewModel);
         }
         [HttpPost]
-        public IActionResult AddFurniture( AddFurnitureViewModel furnitureViewModel)
+        public IActionResult AddFurniture(AddFurnitureViewModel furnitureViewModel)
         {
+            var addFurnitureViewModel = new AddFurnitureViewModel();
+
+
+            var categories = _categoryRepository.GetAllCategories();
+            List<SelectListItem> categorySelectListItems = new List<SelectListItem>();
+
+
+            foreach (var catg in categories)
+            {
+
+                categorySelectListItems.Add(new SelectListItem { Text = catg.CategoryName, Value = catg.CategoryId.ToString() });
+            }
+
+
+            categorySelectListItems.Insert(0, new SelectListItem { Text = "--Select-Category", Value = string.Empty });
+
+
+            addFurnitureViewModel.CategoryList = categorySelectListItems;
             if (ModelState.IsValid)
             {
                 var existingFurnitures = _furnitureRepository.GetAllFurnitures(User.Identity.Name);
-                var furnitures= existingFurnitures?.FirstOrDefault(i => i.ItemName.ToLower() == furnitureViewModel.ItemName.ToLower() && i.WoodType.ToLower() == furnitureViewModel.WoodType.ToLower());
+                var furnitures = existingFurnitures?.FirstOrDefault(i => i.ItemName.ToLower() == furnitureViewModel.ItemName.ToLower() && i.WoodType.ToLower() == furnitureViewModel.WoodType.ToLower());
                 if (furnitures != null)
                 {
-                    return Conflict("Item Already Exists!!!!!");
+                    ModelState.AddModelError("", $"User with {furnitureViewModel.ItemName} already exists!");
+                    return View(addFurnitureViewModel);
                 }
+                else
                 {
                     Furniture furniture = new Furniture
                     {
@@ -98,7 +118,8 @@ namespace Furniture_Management_MVC.Controllers
             }
             return View(furnitureViewModel);
         }
-        [HttpGet]
+
+       [HttpGet]
         public IActionResult UpdateFurniture(int id)
         {
             var updateFurnitureViewModel = new UpdateFurnitureViewModel();
