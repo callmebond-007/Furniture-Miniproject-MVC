@@ -5,7 +5,7 @@
 <h1>Add Furniture</h1>
 <hr />
 
-
+<body style="background-color: #D3D3D3">
 <form asp-action="AddFurniture" asp-controller="Furniture" method="post">
 <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
@@ -17,9 +17,9 @@
 
     </div>
     <div class="form-group">
-        <label>Description</label>
-        <input type="text" asp-for="ItemDescription" class="form-control" />
-        <span asp-validation-for="ItemDescription" class="text-danger"></span>
+        <label>Category</label>
+        <select class="form-control" asp-for="CategoryId" asp-items="@Model.CategoryList"></select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label> Wood Type </label>
@@ -27,15 +27,18 @@
         <span asp-validation-for="WoodType" class="text-danger"></span>
     </div>
     <div class="form-group">
+        <label>Description</label>
+        <input type="text" asp-for="ItemDescription" class="form-control" />
+        <span asp-validation-for="ItemDescription" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
         <label> Price </label>
         <input type="number" asp-for="ItemPrice" class="form-control" />
         <span asp-validation-for="ItemPrice" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label>Category</label>
-        <select class="form-control" asp-for="CategoryId" asp-items="@Model.CategoryList"></select>
-        <span asp-validation-for="CategoryId" class="text-danger"></span>
-    </div>
+    
     <button type="submit" class="btn btn-primary">Submit</button>
      <a class="btn btn-primary" asp-controller="Furniture" asp-action="Index">Cancel</a>
 </form>
+</body>

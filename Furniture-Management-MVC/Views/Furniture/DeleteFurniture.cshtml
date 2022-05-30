@@ -3,7 +3,7 @@
  
 <h2>Do you want to delete the Furniture?</h2>
 <hr />
-
+<body style="background-color: #D3D3D3"> 
 <form asp-controller="Furniture" asp-action="DeleteFurniture" method="post">
     <div class="row">
         <div class="col-sm-3">
@@ -15,10 +15,10 @@
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <label>Description</label>
+            <label>Category Name</label>
         </div>
         <div class="col-sm-3">
-            @Model.ItemDescription
+            @Model.CategoryName
         </div>
     </div>
     <div class="row">
@@ -31,20 +31,22 @@
     </div>
     <div class="row">
         <div class="col-sm-3">
+            <label>Description</label>
+        </div>
+        <div class="col-sm-3">
+            @Model.ItemDescription
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-3">
             <label>Price</label>
         </div>
         <div class="col-sm-3">
             @Model.ItemPrice
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <label>Category Name</label>
-        </div>
-        <div class="col-sm-3">
-            @Model.CategoryName
-        </div>
-    </div>
+    
     <div class="row">
         <div class="col-sm-12">
             <button type="submit" class="btn btn-danger">Delete</button>
@@ -54,4 +56,4 @@
 
     </div>
 </form>
-
+</body>

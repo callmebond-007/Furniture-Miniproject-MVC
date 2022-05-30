@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<FurnitureDetailsViewModel>
 
 <link href="~/css/Index.css" rel="stylesheet" />
-<h1>Furniture List</h1>
+<h1 style="text-align:center">Furniture List</h1>
 <hr />
 
-<body>
+<body style="background-color: #D3D3D3"> 
 
 @if (Model.Count() == 0)
         {
@@ -40,13 +40,12 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                  <h5 class="card-title">@furniture.ItemName</h5>
-                                 <p>Id = @furniture.Id</p>
-                                 <p>Description = @furniture.ItemDescription</p>
-                                 <p>Wood Type = @furniture.WoodType</p>
-                                  <p>Price = @furniture.ItemPrice</p>
-                                 <p>Category = @furniture.CategoryName</p>
-                                 <p>CreatedBy = @furniture.CreatedBy</p>
-                                 <p>CreatedDate = @furniture.CreatedDate</p>
+                                 <p>Category : @furniture.CategoryName</p>
+                                 <p>Wood Type : @furniture.WoodType</p>
+                                 <p>Description : @furniture.ItemDescription</p>
+                                 <p>Price : @furniture.ItemPrice</p>
+                                 <p>CreatedBy : @furniture.CreatedBy</p>
+                                 <p>CreatedDate : @furniture.CreatedDate</p>
                                  <a style="width : 80px; height:40px;" class="btn btn-primary" asp-controller="Furniture" asp-action="UpdateFurniture" asp-route-id="@furniture.Id">Edit</a>
                                  <a style="width : 100px;  height:40px;" class="btn btn-danger" asp-controller="Furniture" asp-action="DeleteFurniture" asp-route-id="@furniture.Id">Delete</a>
                             </div>
